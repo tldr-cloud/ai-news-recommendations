@@ -12,3 +12,8 @@ steps:
   args: ['bash', '-c', 'pip install gcloud-notebook-training && gcloud-notebook-training --input-notebook data_prep.ipynb']
   dir: 'ai-news-recommendations/notebooks'
   timeout: 7200s
+- name: 'docker.io/library/python:3.7'
+  id: 'train'
+  args: ['bash', '-c', 'pip install gcloud-notebook-training && gcloud-notebook-training --input-notebook lang_model.ipynb --accelerator-type NVIDIA_TESLA_T4']
+  dir: 'ai-news-recommendations/notebooks'
+  timeout: 7200s
