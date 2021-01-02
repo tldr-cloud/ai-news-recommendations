@@ -1,0 +1,14 @@
+timeout: 7200s
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  id: 'clone'
+  args: ['clone', '--recurse-submodules', '--branch', 'repro_nb_based_pipeline', 'https://github.com/tldr-cloud/ai-news-recommendations']
+- name: 'gcr.io/cloud-builders/git'
+  id: 'checkout'
+  args: ['checkout', '$COMMIT_SHA']
+  dir: 'ai-news-recommendations'
+- name: 'docker.io/library/python:3.7'
+  id: 'train'
+  args: ['bash', '-c', 'pip install gcloud-notebook-training && gcloud-notebook-training --input-notebook data_prep.ipynb']
+  dir: 'ai-news-recommendations/notebooks'
+  timeout: 7200s
