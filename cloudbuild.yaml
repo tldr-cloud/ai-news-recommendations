@@ -2,7 +2,7 @@ timeout: 7200s
 steps:
 - name: 'gcr.io/cloud-builders/git'
   id: 'clone'
-  args: ['clone', '--recurse-submodules', '--branch', 'repro_nb_based_pipeline', 'https://github.com/tldr-cloud/ai-news-recommendations']
+  args: ['clone', '--recurse-submodules', 'https://github.com/tldr-cloud/ai-news-recommendations']
 - name: 'gcr.io/cloud-builders/git'
   id: 'checkout'
   args: ['checkout', '$COMMIT_SHA']
