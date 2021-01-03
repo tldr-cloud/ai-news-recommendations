@@ -1,0 +1,3 @@
+FROM gcr.io/deeplearning-platform-release/pytorch-gpu:m59
+
+RUN pip install -U fastai==2.1.* fastcore==1.3.*
