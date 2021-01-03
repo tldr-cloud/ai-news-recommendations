@@ -8,12 +8,12 @@ steps:
   args: ['checkout', '$COMMIT_SHA']
   dir: 'ai-news-recommendations'
 - name: 'docker.io/library/python:3.7'
-  id: 'data-pre-'
+  id: 'data-prep'
   args: ['bash', '-c', 'pip install gcloud-notebook-training && gcloud-notebook-training --input-notebook data_prep.ipynb']
   dir: 'ai-news-recommendations/notebooks'
   timeout: 7200s
 - name: 'docker.io/library/python:3.7'
   id: 'train-language-model'
-  args: ['bash', '-c', 'pip install gcloud-notebook-training && gcloud-notebook-training --input-notebook lang_model.ipynb --accelerator-type NVIDIA_TESLA_T4']
+  args: ['bash', '-c', 'pip install gcloud-notebook-training && gcloud-notebook-training --input-notebook lang_model.ipynb --worker-machine-type standard-gpu']
   dir: 'ai-news-recommendations/notebooks'
   timeout: 7200s
