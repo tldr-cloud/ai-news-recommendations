@@ -14,6 +14,6 @@ steps:
   timeout: 7200s
 - name: 'docker.io/library/python:3.7'
   id: 'train-language-model'
-  args: ['bash', '-c', 'pip install gcloud-notebook-training && gcloud-notebook-training --input-notebook lang_model.ipynb --worker-machine-type standard-gpu']
+  args: ['bash', '-c', 'pip install gcloud-notebook-training && gcloud-notebook-training --input-notebook lang_model.ipynb']
   dir: 'ai-news-recommendations/notebooks'
   timeout: 7200s
